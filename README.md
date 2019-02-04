@@ -1,6 +1,6 @@
 # Company endpoints
 
-## `GET /api/tippers`
+## `GET /api/companies`
 
 ### returns
 
