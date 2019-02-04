@@ -1,3 +1,19 @@
+# Company endpoints
+
+## `GET /api/tippers`
+
+### returns
+
+```json
+[
+  {
+    "id": integer,
+    "name": string,
+    "address": string
+  }
+]
+```
+
 # Tipper endpoints
 
 ## `GET /api/tippers`
@@ -103,6 +119,8 @@
 
 # `GET /api/tippees/:id`
 
+### returns
+
 ```json
 [
   {
@@ -115,13 +133,58 @@
 
 # `PUT /api/tippeess/:id`
 
+### injest
+
 ```json
+[
     {
-        "name": string:required,
+    "name": string:required,
+    "company": string,
+    "company-address": string,
+    "photo_url": string,
+    "start-date": integer,
+    "email": string,
+    "tagline": text,
+    "qr_url": text
     }
+]
 ```
 
 ### returns
+
+```json
+[
+    {
+    "name": string:required,
+    "company": string,
+    "photo_url": string,
+    "start-date": integer,
+    "email": string,
+    "tagline": text,
+    "qr_url": text
+    }
+]
+```
+
+## `DELETE /api/tipper/:id`
+
+### returns
+
+```json
+[
+  {
+    "name": string,
+    "email": string,
+    "company": string
+  }
+]
+```
+
+# Register endpoints
+
+## `POST /api/register/tipper`
+
+### injest
 
 ```json
 [
@@ -134,19 +197,24 @@
 ]
 ```
 
-## `DELETE /api/tipper/:id`
+## `POST /api/register/tippee`
+
+### injest
 
 ```json
 [
   {
-    "name": string,
+    "name": string:required,
+    "company": string,
+    "company-address": string,
+    "photo_url": string,
+    "start-date": integer,
     "email": string,
-    "company": string
+    "tagline": text,
+    "qr_url": text
   }
 ]
 ```
-
-## ``POST /api/register/```
 
 #### MVP:
 
