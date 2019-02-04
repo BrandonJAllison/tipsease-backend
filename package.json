@@ -1,0 +1,20 @@
+{
+  "name": "tipsease-backend",
+  "version": "1.0.0",
+  "description": "This is where we will build out the backend",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tipsease/tipsease-backend.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tipsease/tipsease-backend/issues"
+  },
+  "homepage": "https://github.com/tipsease/tipsease-backend#readme"
+}
