@@ -5,10 +5,16 @@ exports.up = function(knex, Promise) {
     // other keys
 
     tbl
-      .string('name')
-      .unique()
+      .string('first_name')
+
       .notNullable();
-    tbl.string('photo_url');
+    tbl.string('last_name').notNullable();
+    tbl
+      .integer('photo_url_id')
+      .references('id')
+      .inTable('photos')
+      .notNullable()
+      .unique();
     tbl
       .string('email')
       .notNullable()

@@ -4,8 +4,16 @@ exports.up = function(knex, Promise) {
     tbl.increments();
 
     //other keys
-    tbl.integer('tippee_id').notNullable();
-    tbl.integer('tipper_id').notNullable();
+    tbl
+      .integer('tipper_id')
+      .notNullable()
+      .references('id')
+      .inTable('tippers');
+    tbl
+      .integer('tipee_id')
+      .notNullable()
+      .references('id')
+      .inTable('tippees');
   });
 };
 
