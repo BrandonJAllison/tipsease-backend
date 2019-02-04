@@ -1,6 +1,7 @@
 exports.up = function(knex, Promise) {
-  return knex.schema.createTable('companiesTippees', tbl => {
+  return knex.schema.createTable('companiesAddresses', tbl => {
     tbl.increments();
+
     tbl
       .integer('company_id')
       .unsigned()
@@ -11,11 +12,11 @@ exports.up = function(knex, Promise) {
       .integer('tippees_id')
       .unsigned()
       .references('id')
-      .inTable('tippees')
+      .inTable('addresses')
       .notNullable();
   });
 };
 
 exports.down = function(knex, Promise) {
-  return knex.schema.dropTableIfExists('companiesTippees');
+  return knex.schema.dropTableIfExists('companiesAddresses');
 };
