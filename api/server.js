@@ -7,8 +7,8 @@ const morgan = require('morgan');
 const server = express();
 
 const knex = require('knex');
-const bcrypt = require('bcrypt');
-const jwt = require('jwt');
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 
 ////============ MIDDLEWARE ============/////////
 

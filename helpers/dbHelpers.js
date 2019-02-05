@@ -1,4 +1,5 @@
 // math functions for random number generaton feat. David
+const db = require('../data/dbConfig');
 
 const random = (a = 0, b = 10) => {
   return Math.floor(Math.random() * (b - a) + a);
@@ -12,14 +13,8 @@ const reallyRandom = (a = 0, b = 10) => {
   }
 };
 
-const getAllParameters = () => {
-  return db('tippers').select(
-    'tippers.id',
-    'tippers.first_name',
-    'tippers.last_name',
-    'tippers.email',
-    'tippers.photo_url'
-  );
+const getTippers = () => {
+  return db.select('tippers.id', 'tippers.first_name').from('tippers');
 };
 
 const getById = id => {
@@ -48,7 +43,7 @@ const removeTipper = id => {
 module.exports = {
   random,
   reallyRandom,
-  getAllParameters,
+  getTippers,
   getById,
   insertData,
   removeTipper
