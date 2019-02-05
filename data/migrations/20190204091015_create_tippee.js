@@ -9,6 +9,11 @@ exports.up = function(knex, Promise) {
 
       .notNullable();
     tbl.string('last_name').notNullable();
+    tbl
+      .string('photo_url')
+      .defaultTo(
+        'https://res.cloudinary.com/drkfk1jtk/image/upload/q_100/v1549379225/default.png'
+      );
     tbl.integer('photo_url_id');
 
     tbl.date('start_date');
