@@ -9,12 +9,8 @@ exports.up = function(knex, Promise) {
 
       .notNullable();
     tbl.string('last_name').notNullable();
-    tbl
-      .integer('photo_url_id')
-      .references('id')
-      .inTable('photos')
-      .notNullable()
-      .unique(); // this is optional
+    tbl.integer('photo_url_id');
+
     tbl.date('start_date');
 
     tbl.string('email').notNullable();

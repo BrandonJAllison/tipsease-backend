@@ -6,6 +6,10 @@ const helmet = require('helmet');
 const morgan = require('morgan');
 const server = express();
 
+const knex = require('knex');
+const bcrypt = require('bcrypt');
+const jwt = require('jwt');
+
 ////============ MIDDLEWARE ============/////////
 
 server.use(express.json());

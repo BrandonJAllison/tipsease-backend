@@ -10,11 +10,11 @@ exports.up = function(knex, Promise) {
       .notNullable();
     tbl.string('last_name').notNullable();
     tbl
-      .integer('photo_url_id')
-      .references('id')
-      .inTable('photos')
-      .notNullable()
-      .unique();
+      .string('photo_url')
+      .defaultTo(
+        'https://res.cloudinary.com/drkfk1jtk/image/upload/q_100/v1549379225/default.png'
+      );
+    tbl.string('photo_url_id');
     tbl
       .string('email')
       .notNullable()

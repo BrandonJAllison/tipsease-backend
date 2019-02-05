@@ -10,7 +10,7 @@ exports.up = function(knex, Promise) {
       .references('id')
       .inTable('tippers');
     tbl
-      .integer('tipee_id')
+      .integer('tippee_id')
       .notNullable()
       .references('id')
       .inTable('tippees');

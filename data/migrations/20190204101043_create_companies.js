@@ -6,7 +6,6 @@ exports.up = function(knex, Promise) {
     //other keys
 
     tbl.string('name').notNullable();
-    tbl.string('address').notNullable();
   });
 };
 
