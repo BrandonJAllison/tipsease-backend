@@ -13,7 +13,8 @@ exports.up = function(knex, Promise) {
       .integer('photo_url_id')
       .references('id')
       .inTable('photos')
-      .notNullable(); // this is optional
+      .notNullable()
+      .unique(); // this is optional
     tbl.date('start_date');
 
     tbl.string('email').notNullable();

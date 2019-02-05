@@ -14,6 +14,8 @@ exports.up = function(knex, Promise) {
       .notNullable()
       .references('id')
       .inTable('tippees');
+    tbl.float('amount').notNullable();
+    tbl.date('date').notNullable();
   });
 };
 
