@@ -6,7 +6,8 @@
   "scripts": {
     "test": "cross-env DB_ENV=testing jest --watch --verbose",
     "start": "node index.js",
-    "server": "nodemon index.js"
+    "server": "nodemon index.js",
+    "debug": "yarn install && ./scripts/init.sh && yarn start"
   },
   "repository": {
     "type": "git",
@@ -33,6 +34,7 @@
     "morgan": "^1.9.1",
     "multer": "^1.4.1",
     "multer-storage-cloudinary": "^2.2.1",
+    "node": "^11.9.0",
     "sqlite3": "^4.0.6"
   },
   "devDependencies": {

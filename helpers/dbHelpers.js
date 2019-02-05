@@ -14,7 +14,9 @@ const reallyRandom = (a = 0, b = 10) => {
 };
 
 const getTippers = () => {
-  return db.select('tippers.id', 'tippers.first_name').from('tippers');
+  return db
+    .select('id', 'first_name', 'last_name', 'email', 'photo_url')
+    .from('tippers');
 };
 
 const getById = id => {
