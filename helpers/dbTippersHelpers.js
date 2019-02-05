@@ -29,9 +29,15 @@ const removeTipper = id => {
     .del();
 };
 
+const updateTipper = (id, data) => {
+  return db('tippers')
+    .where('tippers.id', id)
+    .update(data);
+};
 module.exports = {
   getTippers,
   getByTipperId,
   insertTipperData,
+  updateTipper,
   removeTipper
 };
