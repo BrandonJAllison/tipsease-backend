@@ -120,13 +120,15 @@ router.get('/:id/tips', (req, res) => {
 
 router.post('/:id/tips', (req, res) => {
   const tip = req.body;
-  const { id } = req.params;
+  const { id, date } = req.params;
 
   // i want the tippie's id
   tip.tippee_id = id;
+  tip.date = Date.now();
+  console.log(tip.date);
   db.addTip(tip)
     .then(response => {
-      res.status(201).json({ message: 'tip successfully entered!' });
+      res.status(201).json({ message: 'tip successfully entered!', tip });
     })
     .catch(err => {
       res.status(500).send(err);
