@@ -122,7 +122,10 @@ router.get('/:id/tips', (req, res) => {
 
 router.post('/:id/tips', (req, res) => {
   const tip = req.body;
+  const { id } = req.params;
+
   // i want the tippie's id
+  tip.tippee_id = id;
   db.addTip(tip)
     .then(response => {
       res.status(201).json({ message: 'tip successfully entered!' });

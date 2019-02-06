@@ -11,7 +11,7 @@ function makeToken(user) {
   //// i wonder if this will conflict with the above information!
   const payload = {
     id: user.id,
-    username: user.username
+    email: user.email
   };
   const options = {
     expiresIn: '48h'

@@ -6,10 +6,6 @@ const helmet = require('helmet');
 const morgan = require('morgan');
 const server = express();
 
-const knex = require('knex');
-const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
-
 ////============ MIDDLEWARE ============/////////
 
 server.use(express.json());
@@ -26,9 +22,11 @@ server.get('/', (req, res) => {
 
 tippersRouter = require('./routes/tippersRouter');
 tippeesRouter = require('./routes/tippeesRouter');
+authRouter = require('./routes/authRouter');
 // we will need an auth route in the future
 
 server.use('/api/tippers', tippersRouter);
 server.use('/api/tippees', tippeesRouter);
+server.use('/api', authRouter);
 
 module.exports = server;
