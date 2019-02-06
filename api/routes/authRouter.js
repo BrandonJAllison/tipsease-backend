@@ -35,7 +35,8 @@ router.post('/login', (req, res) => {
           const token = makeToken(tipper);
           res.status(201).json({
             message: `hey ${tipper.first_name}! Welcome to the great game.`,
-            token
+            token,
+            tipper
           });
         } else {
           res.status(401).json({
@@ -51,9 +52,11 @@ router.post('/login', (req, res) => {
       .then(tippee => {
         if (tippee && bcrypt.compareSync(creds.password, tippee.password)) {
           const token = makeToken(tippee);
+
           res.status(201).json({
             message: `hey ${tippee.first_name}! Welcome to the great game.`,
-            token
+            token,
+            tippee
           });
         } else {
           res.status(401).json({
