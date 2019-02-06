@@ -38,7 +38,7 @@ const updateTippee = (id, data) => {
 ///// FOR TIPS ////////
 
 const getTipeeTips = id => {
-  return db('tips').where('tips.tipper_id', id);
+  return db('tips').where('tips.tippee_id', id);
 };
 
 const addTip = tip => {
@@ -49,6 +49,11 @@ const addTip = tip => {
   return db('tips').insert(tip);
 };
 
+const getTippeeTipsAmount = id => {
+  return db('tips')
+    .where('tips.tippee_id', id)
+    .sum('amount');
+};
 module.exports = {
   getTippees,
   getByTippeeId,
@@ -56,5 +61,6 @@ module.exports = {
   updateTippee,
   removeTippee,
   addTip,
-  getTipeeTips
+  getTipeeTips,
+  getTippeeTipsAmount
 };

@@ -104,6 +104,14 @@ router.delete('/:id', (req, res) => {
 });
 
 //// TIPS ROUTES ////////
+router.get('/:id/tips/amount', (req, res) => {
+  const id = req.params.id;
+
+  db.getTippeeTipsAmount(id)
+    .then(tips => res.status(200).json({ amount: tips }))
+    .catch(err => next(err));
+});
+
 router.get('/:id/tips', (req, res) => {
   const id = req.params.id;
 
