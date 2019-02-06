@@ -33,7 +33,7 @@ router.post('/login', (req, res) => {
       .then(user => {
         if (user && bcrypt.compareSync(creds.password, user.password)) {
           const token = makeToken(user);
-          user.role = tipper;
+          user.role = 'tipper';
 
           res.status(201).json({
             message: `hey ${user.first_name}! Welcome to the great game.`,
@@ -54,7 +54,7 @@ router.post('/login', (req, res) => {
       .then(user => {
         if (user && bcrypt.compareSync(creds.password, user.password)) {
           const token = makeToken(user);
-          user.role = tippee;
+          user.role = 'tippee';
 
           res.status(201).json({
             message: `hey ${user.first_name}! Welcome to the great game.`,
