@@ -1,10 +1,8 @@
 /////============ DEPENDENCIES ============/////////
 
 const express = require('express');
-const bcrypt = require('bcryptjs');
-const auth = require('../../api/middleware/auth');
+const { authenticate } = require('../../api/middleware/auth');
 const router = express.Router();
-const jwt = require('jsonwebtoken');
 const imageParser = require('../../config/cloudinary');
 const db = require('../../helpers/dbTippeesHelpers');
 /////============ ROUTES ============/////////
