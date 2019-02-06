@@ -52,7 +52,7 @@ const addTip = tip => {
 const getTippeeTipsAmount = id => {
   return db('tips')
     .where('tips.tippee_id', id)
-    .sum('amount');
+    .sum('amount as amount');
 };
 module.exports = {
   getTippees,

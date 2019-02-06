@@ -108,7 +108,7 @@ router.get('/:id/tips/amount', (req, res) => {
   const id = req.params.id;
 
   db.getTippeeTipsAmount(id)
-    .then(tips => res.status(200).json({ amount: tips }))
+    .then(a => res.status(200).json(a[0]))
     .catch(err => next(err));
 });
 

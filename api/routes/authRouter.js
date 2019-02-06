@@ -9,33 +9,36 @@ const imageParser = require('../../config/cloudinary');
 const db = require('../../helpers/dbTippeesHelpers');
 /////============ ROUTES ============/////////
 
-router.post('/', imageParser.single('image'), (req, res) => {
-  const image = {};
-  const tipper = req.body;
-  if (req.file) {
-    tipper.photo_url = req.file.url;
-    tipper.photo_public_id = req.file.public_id;
-  }
+router.post('/register', imageParser.single('image'), (req, res) => {
+  const { tipperBoolean } = req.body;
+  if (tipperBoolean) {
+    const image = {};
+    const tipper = req.body;
+    if (req.file) {
+      tipper.photo_url = req.file.url;
+      tipper.photo_public_id = req.file.public_id;
+    }
 
-  if (
-    !tipper.first_name ||
-    !tipper.last_name ||
-    !tipper.email ||
-    !tipper.password
-  ) {
-    res.status(400).json({
-      errMessage:
-        'Please add a first name, last name, and an email! Make a fake pass for now.'
-    });
-  }
-  db.insertTipperData(tipper)
-    .then(id => {
-      db.getByTipperId(id[0]).then(data => {
-        res.status(201).json(data);
+    if (
+      !tipper.first_name ||
+      !tipper.last_name ||
+      !tipper.email ||
+      !tipper.password
+    ) {
+      res.status(400).json({
+        errMessage:
+          'Please add a first name, last name, and an email! Make a fake pass for now.'
       });
-    })
-    .catch(err => {
-      console.log(err);
-      res.status(500).json(err);
-    });
+    }
+    db.insertTipperData(tipper)
+      .then(id => {
+        db.getByTipperId(id[0]).then(data => {
+          res.status(201).json(data);
+        });
+      })
+      .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+      });
+  }
 });
