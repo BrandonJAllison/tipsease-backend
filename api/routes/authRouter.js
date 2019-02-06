@@ -30,13 +30,15 @@ router.post('/login', (req, res) => {
     db('tippers')
       .where({ email: creds.email })
       .first()
-      .then(tipper => {
-        if (tipper && bcrypt.compareSync(creds.password, tipper.password)) {
-          const token = makeToken(tipper);
+      .then(user => {
+        if (user && bcrypt.compareSync(creds.password, user.password)) {
+          const token = makeToken(user);
+          user.tipper = true;
+
           res.status(201).json({
-            message: `hey ${tipper.first_name}! Welcome to the great game.`,
+            message: `hey ${user.first_name}! Welcome to the great game.`,
             token,
-            tipper
+            user
           });
         } else {
           res.status(401).json({
@@ -49,14 +51,15 @@ router.post('/login', (req, res) => {
     db('tippees')
       .where({ email: creds.email })
       .first()
-      .then(tippee => {
-        if (tippee && bcrypt.compareSync(creds.password, tippee.password)) {
-          const token = makeToken(tippee);
+      .then(user => {
+        if (user && bcrypt.compareSync(creds.password, user.password)) {
+          const token = makeToken(user);
+          user.tipper = false;
 
           res.status(201).json({
-            message: `hey ${tippee.first_name}! Welcome to the great game.`,
+            message: `hey ${user.first_name}! Welcome to the great game.`,
             token,
-            tippee
+            user
           });
         } else {
           res.status(401).json({
