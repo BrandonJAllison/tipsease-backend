@@ -23,37 +23,6 @@ router.get('/:id', (req, res) => {
     });
 });
 
-router.post('/', imageParser.single('image'), (req, res) => {
-  const image = {};
-  const tippee = req.body;
-  if (req.file) {
-    tippee.photo_url = req.file.url;
-    tippee.photo_public_id = req.file.public_id;
-  }
-
-  if (
-    !tippee.first_name ||
-    !tippee.last_name ||
-    !tippee.email ||
-    !tippee.password
-  ) {
-    res.status(400).json({
-      errMessage:
-        'Please add a first name, last name, and an email! Make a fake pass for now.'
-    });
-  }
-  db.insertTipperData(tippee)
-    .then(id => {
-      db.getByTipperId(id[0]).then(data => {
-        res.status(201).json(data);
-      });
-    })
-    .catch(err => {
-      console.log(err);
-      res.status(500).json(err);
-    });
-});
-
 router.put('/:id', (req, res) => {
   const { id } = req.params;
   const data = req.body;

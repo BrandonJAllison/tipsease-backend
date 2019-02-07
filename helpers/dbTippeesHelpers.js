@@ -3,35 +3,35 @@ const db = require('../data/dbConfig');
 const getTippees = () => {
   return db
     .select('id', 'first_name', 'last_name', 'email', 'photo_url')
-    .from('tippers');
+    .from('tippees');
 };
 
 const getByTippeeId = id => {
-  return db('tippers')
-    .where('tippers.id', id)
+  return db('tippees')
+    .where('tippees.id', id)
     .select(
-      'tippers.id',
-      'tippers.first_name',
-      'tippers.last_name',
-      'tippers.email',
-      'tippers.photo_url'
+      'tippees.id',
+      'tippees.first_name',
+      'tippees.last_name',
+      'tippees.email',
+      'tippees.photo_url'
     );
 };
 
 const insertTippeeData = data => {
   // we need to be able to post whatever data is passed in into our db
-  return db('tippers').insert(data);
+  return db('tippees').insert(data);
 };
 
 const removeTippee = id => {
-  return db('tippers')
-    .where('tippers.id', id)
+  return db('tippees')
+    .where('tippees.id', id)
     .del();
 };
 
 const updateTippee = (id, data) => {
-  return db('tippers')
-    .where('tippers.id', id)
+  return db('tippees')
+    .where('tippees.id', id)
     .update(data);
 };
 
