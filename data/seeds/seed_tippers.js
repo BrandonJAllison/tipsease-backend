@@ -12,7 +12,7 @@ exports.seed = async function(knex, Promise) {
   await knex('tippers').truncate();
 
   const fakeTippers = [];
-  const desiredFakeTippers = 100;
+  const desiredFakeTippers = 50;
 
   for (let i = 0; i < desiredFakeTippers; i++) {
     fakeTippers.push(createFakeTipper(i));

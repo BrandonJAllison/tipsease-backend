@@ -6,7 +6,7 @@ const createFakeEntry = i => ({
 exports.seed = async function(knex, Promise) {
   await knex('companiesaddresses').truncate();
 
-  const desiredFakeEntries = 100;
+  const desiredFakeEntries = 50;
   const fakeEntries = [];
 
   for (let i = 0; i < desiredFakeEntries; i++) {

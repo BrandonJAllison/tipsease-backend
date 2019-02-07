@@ -9,7 +9,7 @@ exports.seed = async function(knex, Promise) {
   await knex('addresses').truncate();
 
   const fakeAddresses = [];
-  const desiredFakeAddresses = 100;
+  const desiredFakeAddresses = 50;
 
   for (let i = 0; i < desiredFakeAddresses; i++) {
     fakeAddresses.push(createFakeAddress());
