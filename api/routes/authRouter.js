@@ -75,7 +75,7 @@ router.post('/register', imageParser.single('image'), (req, res) => {
   const { tipperBoolean, ...data } = req.body;
   const image = {};
 
-  if (tipperBoolean) {
+  if (tipperBoolean && typeof tipperBoolean === 'boolean') {
     const hash = bcrypt.hashSync(data.password, 8);
 
     data.password = hash;
@@ -102,7 +102,7 @@ router.post('/register', imageParser.single('image'), (req, res) => {
         console.log(err);
         res.status(500).json(err);
       });
-  } else {
+  } else if (!tipperBoolean && typeof tipperBoolean === 'boolean') {
     const hash = bcrypt.hashSync(data.password, 8);
 
     data.password = hash;
@@ -123,6 +123,12 @@ router.post('/register', imageParser.single('image'), (req, res) => {
       .catch(err => {
         console.log(err);
         res.status(500).json(err);
+      });
+  } else {
+    res
+      .status(500)
+      .json({
+        errMessage: 'yo scott and olivia, maybe there is no boolean set lol!'
       });
   }
 });
