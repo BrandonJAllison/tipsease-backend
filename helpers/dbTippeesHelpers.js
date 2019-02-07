@@ -2,7 +2,15 @@ const db = require('../data/dbConfig');
 
 const getTippees = () => {
   return db
-    .select('id', 'first_name', 'last_name', 'email', 'photo_url')
+    .select(
+      'id',
+      'first_name',
+      'last_name',
+      'email',
+      'photo_url',
+      'tagline',
+      'start_date'
+    )
     .from('tippees');
 };
 
@@ -14,7 +22,9 @@ const getByTippeeId = id => {
       'tippees.first_name',
       'tippees.last_name',
       'tippees.email',
-      'tippees.photo_url'
+      'tippees.photo_url',
+      'tippees.tagline',
+      'tippees.start_date'
     );
 };
 
