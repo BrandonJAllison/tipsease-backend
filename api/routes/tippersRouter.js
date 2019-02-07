@@ -43,7 +43,7 @@ router.put('/:id', (req, res) => {
       }
     })
     .catch(err => {
-      res.status(500).send({
+      res.status(500).json({
         err,
         message:
           'Not sure, but are you sure you put in a unique email? Try that first!'
