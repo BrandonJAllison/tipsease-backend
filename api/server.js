@@ -17,7 +17,7 @@ server.use(morgan('short'));
 
 /// tippers, tippees, auth, register routes necessary
 server.get('/', (req, res) => {
-  res.send('All good here! Keep up the development!');
+  res.json('All good here! Keep up the development!');
 });
 
 tippersRouter = require('./routes/tippersRouter');
