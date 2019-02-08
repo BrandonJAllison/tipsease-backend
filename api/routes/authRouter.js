@@ -72,9 +72,9 @@ router.post('/login', (req, res) => {
 });
 
 router.post('/register', imageParser.single('image'), (req, res) => {
-  const { tipperBoolean, ...data } = req.body;
+  const { tipperBoolean, start_date, tagline, ...data } = req.body;
   const image = {};
-
+  console.log(data);
   if (tipperBoolean && typeof tipperBoolean === 'boolean') {
     const hash = bcrypt.hashSync(data.password, 8);
 
@@ -103,21 +103,28 @@ router.post('/register', imageParser.single('image'), (req, res) => {
         res.status(500).json(err);
       });
   } else if (!tipperBoolean && typeof tipperBoolean === 'boolean') {
-    const hash = bcrypt.hashSync(data.password, 8);
+    let newData = { ...data, start_date, tagline };
+    console.log('reconstructed data', newData);
+    const hash = bcrypt.hashSync(newData.password, 8);
 
-    data.password = hash;
-    const token = makeToken(data);
-    if (!data.first_name || !data.last_name || !data.email || !data.password) {
+    newData.password = hash;
+    const token = makeToken(newData);
+    if (
+      !newData.first_name ||
+      !newData.last_name ||
+      !newData.email ||
+      !newData.password
+    ) {
       res.status(400).json({
         errMessage:
           'Please add a first name, last name, and an email! Make a fake pass for now.'
       });
     }
     db2
-      .insertTippeeData(data)
+      .insertTippeeData(newData)
       .then(id => {
-        db2.getByTippeeId(id[0]).then(data => {
-          res.status(201).json({ ...data, token });
+        db2.getByTippeeId(id[0]).then(foobar => {
+          res.status(201).json({ ...foobar, token });
         });
       })
       .catch(err => {
@@ -125,11 +132,9 @@ router.post('/register', imageParser.single('image'), (req, res) => {
         res.status(500).json(err);
       });
   } else {
-    res
-      .status(500)
-      .json({
-        errMessage: 'yo scott and olivia, maybe there is no boolean set lol!'
-      });
+    res.status(500).json({
+      errMessage: 'yo scott and olivia, maybe there is no boolean set lol!'
+    });
   }
 });
 
