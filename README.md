@@ -1,19 +1,3 @@
-# Company endpoints
-
-## `GET /api/companies`
-
-### returns
-
-```json
-[
-  {
-    "id": integer,
-    "name": string,
-    "address": string
-  }
-]
-```
-
 # Tipper endpoints
 
 ## `GET /api/tippers`
@@ -37,7 +21,7 @@
 ]
 ```
 
-## `GET /api/tipper/:id`
+## `GET /api/tippers/:id`
 
 ### returns
 
@@ -51,7 +35,7 @@
 ]
 ```
 
-## `DELETE /api/tipper/:id`
+## `DELETE /api/tippers/:id`
 
 ### returns
 
@@ -64,9 +48,9 @@
 ]
 ```
 
-## `PUT /api/tipper/:id`
+## `PUT /api/tippers/:id`
 
-### injest
+### ingest
 
 ```json
     {
@@ -133,7 +117,7 @@
 
 # `PUT /api/tippeess/:id`
 
-### injest
+### ingest
 
 ```json
 [
@@ -166,7 +150,7 @@
 ]
 ```
 
-## `DELETE /api/tipper/:id`
+## `DELETE /api/tippers/:id`
 
 ### returns
 
@@ -182,45 +166,28 @@
 
 # Register endpoints
 
-## `POST /api/register/tipper`
+## `POST /api/register`
 
-### injest
-
-```json
-[
-  {
-    "id": integer,
-    "name": string,
-    "photo_url": string,
-    "email": string
-  }
-]
-```
-
-## `POST /api/register/tippee`
-
-### injest
+### ingest
 
 ```json
 [
   {
-    "name": string:required,
-    "company": string,
-    "company-address": string,
-    "photo_url": string,
-    "start-date": integer,
+    "tipperBoolean": boolean,
+    "first_name": string,
+    "last_name": string,
     "email": string,
-    "tagline": text,
-    "qr_url": text
+    "password": string,
+    "tagline": string
   }
 ]
 ```
 
 # Tipping endpoints
 
-## `POST /api/tippee/:id/tips`
+## `POST /api/tippees/:id/tips`
 
-### injest
+### ingest
 
 ```json
 [
@@ -229,19 +196,4 @@
     "amount": float
   }
 ]
-```
-
-#### MVP:
-
-- [ ] roll our own authsystem
-
-#### STRETCH IDEAS:
-
-- [ ] OAUTH
-- [ ] QR CODES
-- [ ] STRIPE INTEGRATION
-- [ ] GRAPH QL + REST API (dual system)
-
-```
-
 ```
