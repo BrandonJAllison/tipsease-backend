@@ -213,18 +213,3 @@
   }
 ]
 ```
-
-#### MVP:
-
-- [ ] roll our own authsystem
-
-#### STRETCH IDEAS:
-
-- [ ] OAUTH
-- [ ] QR CODES
-- [ ] STRIPE INTEGRATION
-- [ ] GRAPH QL + REST API (dual system)
-
-```
-
-```
