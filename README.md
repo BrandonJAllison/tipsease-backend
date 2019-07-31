@@ -66,7 +66,7 @@
 
 ## `PUT /api/tipper/:id`
 
-### injest
+### ingest
 
 ```json
     {
@@ -133,7 +133,7 @@
 
 # `PUT /api/tippeess/:id`
 
-### injest
+### ingest
 
 ```json
 [
@@ -182,36 +182,19 @@
 
 # Register endpoints
 
-## `POST /api/register/tipper`
+## `POST /api/register`
 
-### injest
-
-```json
-[
-  {
-    "id": integer,
-    "name": string,
-    "photo_url": string,
-    "email": string
-  }
-]
-```
-
-## `POST /api/register/tippee`
-
-### injest
+### ingest
 
 ```json
 [
   {
-    "name": string:required,
-    "company": string,
-    "company-address": string,
-    "photo_url": string,
-    "start-date": integer,
+    "tipperBoolean": boolean,
+    "first_name": string,
+    "last_name": string,
     "email": string,
-    "tagline": text,
-    "qr_url": text
+    "password": string,
+    "tagline": string
   }
 ]
 ```
@@ -220,7 +203,7 @@
 
 ## `POST /api/tippee/:id/tips`
 
-### injest
+### ingest
 
 ```json
 [
