@@ -1,19 +1,3 @@
-# Company endpoints
-
-## `GET /api/companies`
-
-### returns
-
-```json
-[
-  {
-    "id": integer,
-    "name": string,
-    "address": string
-  }
-]
-```
-
 # Tipper endpoints
 
 ## `GET /api/tippers`
@@ -37,7 +21,7 @@
 ]
 ```
 
-## `GET /api/tipper/:id`
+## `GET /api/tippers/:id`
 
 ### returns
 
@@ -51,7 +35,7 @@
 ]
 ```
 
-## `DELETE /api/tipper/:id`
+## `DELETE /api/tippers/:id`
 
 ### returns
 
@@ -64,7 +48,7 @@
 ]
 ```
 
-## `PUT /api/tipper/:id`
+## `PUT /api/tippers/:id`
 
 ### ingest
 
@@ -166,7 +150,7 @@
 ]
 ```
 
-## `DELETE /api/tipper/:id`
+## `DELETE /api/tippers/:id`
 
 ### returns
 
@@ -201,7 +185,7 @@
 
 # Tipping endpoints
 
-## `POST /api/tippee/:id/tips`
+## `POST /api/tippees/:id/tips`
 
 ### ingest
 
